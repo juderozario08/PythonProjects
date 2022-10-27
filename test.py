@@ -53,3 +53,5 @@ def thursday8am(ls):
 print(thursday8am([True, False]))
 print(thursday8am([True, False, False]))
 print(thursday8am([False, False, True, False, True, True, False, True, True]))
+
+print(max("string", "string2"))
