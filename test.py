@@ -50,8 +50,6 @@ def thursday8am(ls):
         else thursday8am(ls[0:ceil(len(ls)/2)]) or thursday8am(ls[ceil(len(ls)/2):len(ls)])
 
 
-print(thursday8am([True, False]))
-print(thursday8am([True, False, False]))
-print(thursday8am([False, False, True, False, True, True, False, True, True]))
-
-print(max("string", "string2"))
+# print(thursday8am([True, False]))
+# print(thursday8am([True, False, False]))
+# print(thursday8am([False, False, True, False, True, True, False, True, True]))
