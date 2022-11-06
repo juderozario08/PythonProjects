@@ -61,22 +61,24 @@ def fibn(number):
 def perfNumberAndPrimes(start, stop):
     primes = []
     perfectNumbers = []
+    primeFound = True
     for i in range(start, stop+1):
-        # Primes
-        for j in range(i):
-            if j > 1 and i % j == 0:
-                break
-            elif j == i-1:
-                primes.append(i)
         count = 0
-        # Perfect numbers
-        for k in range(1, i):
-            if i % k == 0:
-                count += k
-            if k == i-1 and count == i:
-                perfectNumbers.append(count)
+        for j in range(i):
+            if j >= 1:
+                if i % j == 0:
+                    count += j
+                    if j != 1:
+                        primeFound = False
+            if j == i-1:
+                if count == i:
+                    perfectNumbers.append(count)
+                if primeFound:
+                    primes.append(i)
+        primeFound = True
     print(primes)
     print(perfectNumbers)
 
 
-perfNumberAndPrimes(2, 6)
+perfNumberAndPrimes(int(input("Enter Start Range: ")),
+                    int(input("Enter Stop Range: ")))
