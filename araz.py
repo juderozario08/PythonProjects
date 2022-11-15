@@ -80,5 +80,43 @@ def perfNumberAndPrimes(start, stop):
     print(primes)
     print(perfectNumbers)
 
-
 # perfNumberAndPrimes(int(input("Enter Start Range: ")),int(input("Enter Stop Range: ")))
+
+
+def decode(string):
+    result = ''
+    for i in string:
+        if i.isalpha():
+            result += chr((ord(i) - 97 - 5) % 26 + 97)
+        else:
+            result += chr(ord(i) - 3)
+    print('Decoded Message: ' + result)
+    print('Imposter Name: ' + result[0].upper() + result[1:result.find('!')])
+
+
+decode('ensn$#nx#ymj#nrutxyjw/#hfyhm#mjw1')
+decode('xtsjy$#nx#ymj#nrutxyjw/#hfyhm#mnr1')
+
+
+def weirdProgram():
+    strings = []
+    vowels = 'aeiouAEIOU'
+    while True:
+        string = input()
+        if string == '-x-':
+            break
+        else:
+            for char in string:
+                if char in vowels:
+                    index = string.find(char)
+                    if index == 0:
+                        strings.append(string + 'way ')
+                        break
+                    else:
+                        strings.append(
+                            string[index:] + string[:index] + 'ay ')
+                        break
+    print(''.join(strings))
+
+
+weirdProgram()

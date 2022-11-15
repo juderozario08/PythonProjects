@@ -4,7 +4,7 @@ from random import randrange
 
 def longestSequence(ls):
     start, end = 0, 0
-    biggestRange, biggestRangeLen = (), 0
+    biggestRange = (0, 0)
     for i in range(len(ls)):
         start = i
         end = i
@@ -14,9 +14,8 @@ def longestSequence(ls):
                 i += 1
             else:
                 break
-        if end-start > biggestRangeLen:
+        if end-start > biggestRange[1]-biggestRange[0]:
             biggestRange = (start, end)
-            biggestRangeLen = end - start
     for i in range(20):
         if biggestRange[0] == i:
             print(f'({ls[i]}', end=' ')
@@ -56,7 +55,7 @@ def occupy(N):
         print(''.join(['X ' if j else '_ ' for j in ls]))
 
 
-for i in range(5):
-    longestSequence([randrange(1, 7) for i in range(20)])
-    print(longestFalse([bool(randrange(0, 2)) for i in range(10)]))
-    occupy(10)
+# for i in range(5):
+longestSequence([randrange(1, 7) for i in range(20)])
+print(longestFalse([bool(randrange(0, 2)) for i in range(10)]))
+occupy(randrange(15, 31))
