@@ -13,9 +13,22 @@ import unittest
 # YOUR ANSWER HERE
 # --------------------------------------------------------------
 
+
+def find_root(x, epsilon):
+    low, high = 0, x
+    y = (low+high)/2
+    while abs(y**2 - x) > epsilon:
+        if y**2 > x:
+            high = y
+        elif y**2 < x:
+            low = y
+        y = (high+low)/2
+    return y
 # --------------------------------------------------------------
 # Test Cases
 # --------------------------------------------------------------
+
+
 class myTests(unittest.TestCase):
     def test1(self):
         x = 125
@@ -28,12 +41,13 @@ class myTests(unittest.TestCase):
         epsilon = 0.001
         error = find_root(x, epsilon)**2 - x
         self.assertTrue(error < epsilon)
-    
+
     def test3(self):
         x = 3213123
         epsilon = 0.001
         error = find_root(x, epsilon)**2 - x
         self.assertTrue(error < epsilon)
+
 
 if __name__ == '__main__':
     unittest.main(exit=True)

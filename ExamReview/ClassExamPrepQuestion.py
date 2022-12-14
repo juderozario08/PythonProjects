@@ -24,198 +24,205 @@ to the requirements described in each class/method, so as to conquer your nightm
 and obliterate all traces of the Teletubbies!
 '''
 
+
 class Dream:
-	'''
-	Dreams are pretty good. Usually with apple pies and candies and all that good stuff.
+    '''
+    Dreams are pretty good. Usually with apple pies and candies and all that good stuff.
 
-	Your task is as follows:
-	Construct the "__init__" method for a Dream class, that takes in 2 arguments (plus self),
-	self (which you ALWAYS require in your constructors, even if there is nothing else in them!)
-	a string "title", and
-	an int "length"
-	And sets a list dream_elements to start as the empty list: []
-	[1]
+    Your task is as follows:
+    Construct the "__init__" method for a Dream class, that takes in 2 arguments (plus self),
+    self (which you ALWAYS require in your constructors, even if there is nothing else in them!)
+    a string "title", and
+    an int "length"
+    And sets a list dream_elements to start as the empty list: []
+    [1]
 
-	Then, once you have completed your constructor, create an instance method called
-	change_title(a), which changes the title of your dream instance to the string a.
-	[2, 3]
+    Then, once you have completed your constructor, create an instance method called
+    change_title(a), which changes the title of your dream instance to the string a.
+    [2, 3]
 
-	Then, create another instance method called add_to_dream(topic), which adds the string
-	topic to the dream_elements list.
-	[2, 3]
+    Then, create another instance method called add_to_dream(topic), which adds the string
+    topic to the dream_elements list.
+    [2, 3]
 
-	Finally, create an instance method dreams_to_dust(), which replaces each element of the 
-	dream_elements list with the string "dust".
-	[2, 3]
-	'''
-	def __init__(self, title, length):
-		self.title = title
-		self.length = length
-		self.dream_elements = []
-	
-	def change_title(self, a):
-		self.title = a
-	
-	def add_to_dream(self, topic):
-		self.dream_elements.append(topic)
-	
-	def dreams_to_dust(self):
-		copy = self.dream_elements[:]
-		self.dream_elements = []
-		for e in copy:
-			self.dream_elements.append('dust')
+    Finally, create an instance method dreams_to_dust(), which replaces each element of the 
+    dream_elements list with the string "dust".
+    [2, 3]
+    '''
+
+    def __init__(self, title: str, length: int):
+        self.title = title
+        self.length = length
+        self.dream_elements = []
+
+    def change_title(self, a):
+        self.title = a
+
+    def add_to_dream(self, topic):
+        self.dream_elements.append(topic)
+
+    def dreams_to_dust(self):
+        for i in range(len(self.dream_elements)):
+            self.dream_elements[i] = 'dust'
 
 
 class Nightmare:
-	'''
-	Nightmares are pretty bad. Usually with Teletubbies and chainsaws and all that bad stuff.
+    '''
+    Nightmares are pretty bad. Usually with Teletubbies and chainsaws and all that bad stuff.
 
-	Your task is as follows:
-	Construct the "__init__" method for a Nightmare class, that takes in 0 arguments (except self of course)!
-	However, you should create an instance variable "topic" that defaults to the string
-	"Teletubbies", and an instance variable for an attached Dream that the nightmare is
-	in, called "attached_dream" (which defaults to None).
-	[1]
+    Your task is as follows:
+    Construct the "__init__" method for a Nightmare class, that takes in 0 arguments (except self of course)!
+    However, you should create an instance variable "topic" that defaults to the string
+    "Teletubbies", and an instance variable for an attached Dream that the nightmare is
+    in, called "attached_dream" (which defaults to None).
+    [1]
 
-	Then, create a method attach_to_dream(d), which attached your nightmare instance
-	to a dream via setting attached_dream to the argument Dream d.
-	[2, 3]
+    Then, create a method attach_to_dream(d), which attached your nightmare instance
+    to a dream via setting attached_dream to the argument Dream d.
+    [2, 3]
 
-	Then, create a method has_attached_dream() which returns True if your attached_dream 
-	is not None, and False otherwise.
-	[2, 3]
+    Then, create a method has_attached_dream() which returns True if your attached_dream 
+    is not None, and False otherwise.
+    [2, 3]
 
-	Finally, create a method WAKE_ME_UP(), which will set the attached_dream's length to 0,
-	and call it's dreams_to_dust() method.
-	[2, 3]
-	'''
-	def __init__(self):
-		self.topic = "Teletubbies"
-		self.attached_dream = None
-	
-	def attach_to_dream(self, d):
-		self.attached_dream = d
+    Finally, create a method WAKE_ME_UP(), which will set the attached_dream's length to 0,
+    and call it's dreams_to_dust() method.
+    [2, 3]
+    '''
 
-	def has_attached_dream(self):
-		if self.attached_dream != None:
-			return True
-		return False
-	
-	def WAKE_ME_UP(self):
-		self.attached_dream.length = 0
-		self.attached_dream.dreams_to_dust()
-	pass
+    def __init__(self):
+        self.topic = 'Teletubbies'
+        self.attached_dream = None
+
+    def attach_to_dream(self, d: Dream):
+        self.attached_dream = d
+
+    def has_attached_dream(self):
+        return self.attached_dream != None
+
+    def WAKE_ME_UP(self):
+        self.attached_dream.length = 0
+        self.attached_dream.dreams_to_dust()
+
 
 def return_titles(list_of_dreams):
-	'''
-	Create a method that takes in a list of Dreams "list_of_dreams" as input, and returns
-	a list containing the titles of all Dreams in that list.
-	[2, 4]
-	'''
-	L = []
-	for dream in list_of_dreams:
-		L.append(dream.title)
-	return L
+    '''
+    Create a method that takes in a list of Dreams "list_of_dreams" as input, and returns
+    a list containing the titles of all Dreams in that list.
+    [2, 4]
+    '''
+    return [i.title for i in list_of_dreams]
+
 
 def WAKE_ME_UP_INSIDE(cant_wake_up):
-	'''
-	Create a method that takes in a list of Nightmares "cant_wake_up", as input, which
-	then calls the WAKE_ME_UP() method for each Nightmare in the list.
-	[3, 4]
-	'''
-	for nightmare in cant_wake_up:
-		nightmare.WAKE_ME_UP()
-	pass
+    '''
+    Create a method that takes in a list of Nightmares "cant_wake_up", as input, which
+    then calls the WAKE_ME_UP() method for each Nightmare in the list.
+    [3, 4]
+    '''
+    for nightmare in cant_wake_up:
+        nightmare.WAKE_ME_UP()
+
 
 def how_long_are_my_dreams(list_of_dreams):
-	'''
-	Create a method that takes in a list of Dreams "list of dreams" as input, and returns
-	the sum of all Dream lengths in that list.
-	[2, 4]
-	'''
-	L = []
-	for dream in list_of_dreams:
-		L.append(dream.length)
-	return sum(L)
-	pass
+    '''
+    Create a method that takes in a list of Dreams "list of dreams" as input, and returns
+    the sum of all Dream lengths in that list.
+    [2, 4]
+    '''
+    return sum([dream.length for dream in list_of_dreams])
 
 # --------------------------------------------------------------
 # The Testing
 # --------------------------------------------------------------
+
+
 class myTests(unittest.TestCase):
-    def test1(self): # Testing Dream constructor
-    	d = Dream("my awesome dream", 5)
-    	self.assertEqual(d.title, "my awesome dream")
-    	self.assertEqual(d.length, 5)
-    	self.assertEqual(d.dream_elements, [])
-    def test2(self): # Testing nightmare constructor
-    	n = Nightmare()
-    	self.assertEqual(n.topic, "Teletubbies")
-    	self.assertEqual(n.attached_dream, None)
-    def test3(self): # Testing Dream.change_title()
-    	d = Dream("my awesome dream", 5)
-    	d.change_title("my great dream")
-    	self.assertEqual(d.title, "my great dream")
-    def test4(self): # Testing Dream.add_to_dream()
-    	d = Dream("my awesome dream", 5)
-    	d.change_title("my great dream")
-    	d.add_to_dream("rainbows")
-    	d.add_to_dream("butterflies")
-    	self.assertEqual(d.dream_elements, ["rainbows", "butterflies"])
-    def test5(self): # Testing Dream.dreams_to_dust()
-    	d = Dream("my ruined dream", 5)
-    	d.add_to_dream("rainbows")
-    	d.add_to_dream("butterflies")
-    	d.add_to_dream("horsies")
-    	d.dreams_to_dust()
-    	self.assertEqual(d.dream_elements, ["dust", "dust", "dust"])
-    def test6(self): # Testing Nightmare.attach_to_dream()
-    	n = Nightmare()
-    	d = Dream("my awesome dream", 5)
-    	n.attach_to_dream(d)
-    	self.assertEqual(n.attached_dream, d)
+    def test1(self):  # Testing Dream constructor
+        d = Dream("my awesome dream", 5)
+        self.assertEqual(d.title, "my awesome dream")
+        self.assertEqual(d.length, 5)
+        self.assertEqual(d.dream_elements, [])
+
+    def test2(self):  # Testing nightmare constructor
+        n = Nightmare()
+        self.assertEqual(n.topic, "Teletubbies")
+        self.assertEqual(n.attached_dream, None)
+
+    def test3(self):  # Testing Dream.change_title()
+        d = Dream("my awesome dream", 5)
+        d.change_title("my great dream")
+        self.assertEqual(d.title, "my great dream")
+
+    def test4(self):  # Testing Dream.add_to_dream()
+        d = Dream("my awesome dream", 5)
+        d.change_title("my great dream")
+        d.add_to_dream("rainbows")
+        d.add_to_dream("butterflies")
+        self.assertEqual(d.dream_elements, ["rainbows", "butterflies"])
+
+    def test5(self):  # Testing Dream.dreams_to_dust()
+        d = Dream("my ruined dream", 5)
+        d.add_to_dream("rainbows")
+        d.add_to_dream("butterflies")
+        d.add_to_dream("horsies")
+        d.dreams_to_dust()
+        self.assertEqual(d.dream_elements, ["dust", "dust", "dust"])
+
+    def test6(self):  # Testing Nightmare.attach_to_dream()
+        n = Nightmare()
+        d = Dream("my awesome dream", 5)
+        n.attach_to_dream(d)
+        self.assertEqual(n.attached_dream, d)
+
     def test7(self):
-    	n = Nightmare()
-    	d = Dream("my awesome dream", 5)
-    	self.assertEqual(n.has_attached_dream(), False)
-    	n.attach_to_dream(d)
-    	self.assertEqual(n.has_attached_dream(), True)
-    def test8(self): # Testing Nightmare.WAKE_ME_UP()
-    	n = Nightmare()
-    	d = Dream("my awesome dream", 5)
-    	d.add_to_dream("pumpkins")
-    	n.attach_to_dream(d)
-    	n.WAKE_ME_UP()
-    	self.assertEqual(d.length, 0)
-    	self.assertEqual(d.dream_elements, ["dust"])
-    def test9(self): # Testing return_titles()
-    	d1 = Dream("my awesome dream!", 5)
-    	d2 = Dream("my fantastic dream!!", 4)
-    	d3 = Dream("my superb dream!!!", 3)
-    	self.assertEqual(return_titles([d1, d2, d3]), ["my awesome dream!", "my fantastic dream!!", "my superb dream!!!"])
-    def test10(self): # Testing WAKE_ME_UP_INSIDE()
-    	d1 = Dream("my awesome dream!", 5)
-    	d1.add_to_dream("sprinkles")
-    	d2 = Dream("my fantastic dream!!", 4)
-    	d2.add_to_dream("cake")
-    	d2.add_to_dream("chocolates")
-    	n1 = Nightmare()
-    	n2 = Nightmare()
-    	n1.attach_to_dream(d1)
-    	n2.attach_to_dream(d2)
-    	WAKE_ME_UP_INSIDE([n1, n2])
-    	self.assertEqual(d1.length, 0)
-    	self.assertEqual(d2.length, 0)
-    	self.assertEqual(d1.dream_elements, ["dust"])
-    	self.assertEqual(d2.dream_elements, ["dust", "dust"])
-    def test11(self): # Testing how_long_are_my_dreams()
-    	d1 = Dream("my awesome dream!", 5)
-    	d2 = Dream("my fantastic dream!!", 4)
-    	d3 = Dream("my superb dream!!!", 3)
-    	self.assertEqual(how_long_are_my_dreams([d1, d2, d3]), 12)
+        n = Nightmare()
+        d = Dream("my awesome dream", 5)
+        self.assertEqual(n.has_attached_dream(), False)
+        n.attach_to_dream(d)
+        self.assertEqual(n.has_attached_dream(), True)
+
+    def test8(self):  # Testing Nightmare.WAKE_ME_UP()
+        n = Nightmare()
+        d = Dream("my awesome dream", 5)
+        d.add_to_dream("pumpkins")
+        n.attach_to_dream(d)
+        n.WAKE_ME_UP()
+        self.assertEqual(d.length, 0)
+        self.assertEqual(d.dream_elements, ["dust"])
+
+    def test9(self):  # Testing return_titles()
+        d1 = Dream("my awesome dream!", 5)
+        d2 = Dream("my fantastic dream!!", 4)
+        d3 = Dream("my superb dream!!!", 3)
+        self.assertEqual(return_titles([d1, d2, d3]), [
+                         "my awesome dream!", "my fantastic dream!!", "my superb dream!!!"])
+
+    def test10(self):  # Testing WAKE_ME_UP_INSIDE()
+        d1 = Dream("my awesome dream!", 5)
+        d1.add_to_dream("sprinkles")
+        d2 = Dream("my fantastic dream!!", 4)
+        d2.add_to_dream("cake")
+        d2.add_to_dream("chocolates")
+        n1 = Nightmare()
+        n2 = Nightmare()
+        n1.attach_to_dream(d1)
+        n2.attach_to_dream(d2)
+        WAKE_ME_UP_INSIDE([n1, n2])
+        self.assertEqual(d1.length, 0)
+        self.assertEqual(d2.length, 0)
+        self.assertEqual(d1.dream_elements, ["dust"])
+        self.assertEqual(d2.dream_elements, ["dust", "dust"])
+
+    def test11(self):  # Testing how_long_are_my_dreams()
+        d1 = Dream("my awesome dream!", 5)
+        d2 = Dream("my fantastic dream!!", 4)
+        d3 = Dream("my superb dream!!!", 3)
+        self.assertEqual(how_long_are_my_dreams([d1, d2, d3]), 12)
+
 
 if __name__ == '__main__':
- unittest.main(exit=True)
+    unittest.main(exit=True)
 # --------------------------------------------------------------
 # The End
 # --------------------------------------------------------------
