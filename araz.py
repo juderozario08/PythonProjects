@@ -56,7 +56,7 @@ def fibn(number):
         print(result, end=' ')
 
 
-fibn(1*10**15)
+# fibn(50)
 
 
 def perfNumberAndPrimes(start, stop):
@@ -86,16 +86,13 @@ def perfNumberAndPrimes(start, stop):
 def decode(string):
     result = ''
     for i in string:
-        if i.isalpha():
-            result += chr((ord(i) - 97 - 5) % 26 + 97)
-        else:
-            result += chr(ord(i) - 3)
+        result += chr((ord(i) - 97 - 5) % 26 + 97) if i.isalpha() else chr(ord(i) - 3)
     print('Decoded Message: ' + result)
     print('Imposter Name: ' + result[0].upper() + result[1:result.find('!')])
 
 
-decode('ensn$#nx#ymj#nrutxyjw/#hfyhm#mjw1')
-decode('xtsjy$#nx#ymj#nrutxyjw/#hfyhm#mnr1')
+# decode('ensn$#nx#ymj#nrutxyjw/#hfyhm#mjw1')
+# decode('xtsjy$#nx#ymj#nrutxyjw/#hfyhm#mnr1')
 
 
 def weirdProgram():
@@ -119,4 +116,5 @@ def weirdProgram():
     print(''.join(strings))
 
 
-weirdProgram()
+# weirdProgram()
+

@@ -1,0 +1,31 @@
+Base Inputs
+a : [False, False, False, False, True, True, True, True]
+b : [False, False, True, True, False, False, True, True]
+c : [False, True, False, True, False, True, False, True]
+a': [True, True, True, True, False, False, False, False]
+b': [True, True, False, False, True, True, False, False]
+c': [True, False, True, False, True, False, True, False]
+
+Logical Terms
+a+b : [False, False, True, True, True, True, True, True]
+c'+a : [True, False, True, False, True, True, True, True]
+
+Logical Statement
+(a+b)(c'+a) : [False, False, True, False, True, True, True, True]
+
+Base Inputs
+a : [False, False, False, False, True, True, True, True]
+b : [False, False, True, True, False, False, True, True]
+c : [False, True, False, True, False, True, False, True]
+a': [True, True, True, True, False, False, False, False]
+b': [True, True, False, False, True, True, False, False]
+c': [True, False, True, False, True, False, True, False]
+
+Logical Terms
+a : [False, False, False, False, True, True, True, True]
+bc' : [False, False, True, False, False, False, True, False]
+
+Logical Statement
+a+bc' : [False, False, True, False, True, True, True, True]
+
+(a+b)(c'+a) and a+bc' are logically equivalent.
